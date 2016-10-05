@@ -189,12 +189,20 @@
 	    });
 	  },
 	
+	  handleClick: function handleClick(create) {
+	    create({
+	      message: "test",
+	      author: "test",
+	      image: "http://www.focusonline.nl/files/img/avatar-4.png"
+	    });
+	  },
+	
 	  render: function render() {
 	    return React.createElement(
 	      "div",
 	      { className: "new_tweet" },
 	      React.createElement("input", { type: "text", id: "tweet_text", onChange: this.handleChange }),
-	      React.createElement("input", { type: "button", value: "Tweet" }),
+	      React.createElement("input", { type: "button", value: "Tweet", onClick: console.log("hello") }),
 	      React.createElement(
 	        "div",
 	        { id: "textCount" },
