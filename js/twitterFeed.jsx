@@ -17,16 +17,11 @@ var dummyTweets = [
   }
 ];
 
-postTweet = function(tweet) {
-  dummyTweets.push(tweet);
-  console.log(dummyTweets);
-}
-
 var TweetFeed = React.createClass({
   render: function() {
     return (
       <div className="twitter_feed">
-        <TweetForm postFunction={postTweet}/>
+        <TweetForm/>
         <TweetCount count={dummyTweets.length} />
         <TweetList tweets={dummyTweets} />
       </div>
