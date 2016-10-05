@@ -4,7 +4,7 @@ var TweetList = React.createClass({
   render: function() {
     var list = this.props.tweets.map(function(tweet, i) {
       return (
-        <Tweet key={i} message={tweet.message} author={tweet.author} />
+        <Tweet key={i} message={tweet.message} author={tweet.author} image={tweet.image} />
       )
     })
 
