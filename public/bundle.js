@@ -49,9 +49,9 @@
 
 	'use strict';
 	
-	var TweetFeed = __webpack_require__(/*! ./twitterFeed.jsx */ 1);
+	var TwitterFeed = __webpack_require__(/*! ./twitterFeed.jsx */ 1);
 	
-	ReactDOM.render(React.createElement(TweetFeed, null), document.getElementById('container'));
+	ReactDOM.render(React.createElement(TwitterFeed, null), document.getElementById('container'));
 
 /***/ },
 /* 1 */
@@ -167,12 +167,26 @@
 	var TweetForm = React.createClass({
 	  displayName: "TweetForm",
 	
-	  render: function render() {
+	
+	  handleChange: function handleChange() {
+	    //console.log(document.getElementById('tweet_text').value.length);
+	    var remaining = 140 - document.getElementById('tweet_text').value.length;
+	    this.render(remaining);
+	  },
+	
+	  render: function render(remaining) {
+	    console.log(remaining);
 	    return React.createElement(
 	      "div",
 	      { className: "new_tweet" },
-	      React.createElement("input", { type: "text", id: "tweet_text" }),
-	      React.createElement("input", { type: "button", value: "Tweet" })
+	      React.createElement("input", { type: "text", id: "tweet_text", onChange: this.handleChange }),
+	      React.createElement("input", { type: "button", value: "Tweet" }),
+	      React.createElement(
+	        "div",
+	        { id: "textCount" },
+	        "Hello ",
+	        remaining
+	      )
 	    );
 	  }
 	});
