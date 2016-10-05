@@ -170,14 +170,21 @@
 	  displayName: "TweetForm",
 	
 	
+	  getInitialState: function getInitialState() {
+	    return {
+	      textcount: 140
+	    };
+	  },
+	
 	  handleChange: function handleChange() {
 	    //console.log(document.getElementById('tweet_text').value.length);
 	    var remaining = 140 - document.getElementById('tweet_text').value.length;
-	    this.render(remaining);
+	    this.setState({
+	      textcount: remaining
+	    });
 	  },
 	
-	  render: function render(remaining) {
-	    console.log(remaining);
+	  render: function render() {
 	    return React.createElement(
 	      "div",
 	      { className: "new_tweet" },
@@ -186,8 +193,7 @@
 	      React.createElement(
 	        "div",
 	        { id: "textCount" },
-	        "Hello ",
-	        remaining
+	        this.state.textcount
 	      )
 	    );
 	  }
