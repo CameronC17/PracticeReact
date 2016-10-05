@@ -77,6 +77,11 @@
 	  author: "@spartan"
 	}];
 	
+	postTweet = function postTweet(tweet) {
+	  dummyTweets.push(tweet);
+	  console.log(dummyTweets);
+	};
+	
 	var TweetFeed = React.createClass({
 	  displayName: 'TweetFeed',
 	
@@ -84,7 +89,7 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'twitter_feed' },
-	      React.createElement(TweetForm, null),
+	      React.createElement(TweetForm, { postFunction: postTweet }),
 	      React.createElement(TweetCount, { count: dummyTweets.length }),
 	      React.createElement(TweetList, { tweets: dummyTweets })
 	    );
@@ -188,8 +193,16 @@
 	    return React.createElement(
 	      "div",
 	      { className: "new_tweet" },
-	      React.createElement("input", { type: "text", id: "tweet_text", onChange: this.handleChange }),
-	      React.createElement("input", { type: "button", value: "Tweet" }),
+	      React.createElement(
+	        "form",
+	        null,
+	        React.createElement("input", { type: "text", id: "tweet_text", onChange: this.handleChange }),
+	        React.createElement(
+	          "button",
+	          { type: "submit" },
+	          "Tweet"
+	        )
+	      ),
 	      React.createElement(
 	        "div",
 	        { id: "textCount" },
