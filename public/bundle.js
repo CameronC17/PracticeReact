@@ -49,13 +49,87 @@
 
 	'use strict';
 	
-	var TweetFeed = __webpack_require__(/*! ./twitterFeed.jsx */ 3);
+	var TwitterFeed = __webpack_require__(/*! ./twitterFeed.jsx */ 1);
 	
-	ReactDOM.render(React.createElement(TweetFeed, null), document.getElementById('container'));
+	ReactDOM.render(React.createElement(TwitterFeed, null), document.getElementById('container'));
 
 /***/ },
-/* 1 */,
+/* 1 */
+/*!****************************!*\
+  !*** ./js/twitterFeed.jsx ***!
+  \****************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var TweetList = __webpack_require__(/*! ./tweetList.jsx */ 2);
+	var TweetForm = __webpack_require__(/*! ./tweetForm.jsx */ 4);
+	var TweetCount = __webpack_require__(/*! ./tweetCount.jsx */ 5);
+	
+	var dummyTweets = [{
+	  message: "React is not great!",
+	  author: "@steveyblam",
+	  image: "http://i.imgur.com/L2VbuPE.gif"
+	}, {
+	  message: "React is ok!",
+	  author: "@steveybob",
+	  image: "http://i.imgur.com/L2VbuPE.gif"
+	}, {
+	  message: "React is rubbish!",
+	  author: "@spartan",
+	  image: "http://i.imgur.com/L2VbuPE.gif"
+	}];
+	
+	var TweetFeed = React.createClass({
+	  displayName: 'TweetFeed',
+	
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'twitter_feed' },
+	      React.createElement(TweetForm, null),
+	      React.createElement(TweetCount, { count: dummyTweets.length }),
+	      React.createElement(TweetList, { tweets: dummyTweets })
+	    );
+	  }
+	});
+	
+	module.exports = TweetFeed;
+
+/***/ },
 /* 2 */
+/*!**************************!*\
+  !*** ./js/tweetList.jsx ***!
+  \**************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var Tweet = __webpack_require__(/*! ./tweet.jsx */ 3);
+	
+	var TweetList = React.createClass({
+	  displayName: "TweetList",
+	
+	  render: function render() {
+	    var list = this.props.tweets.map(function (tweet, i) {
+	      return React.createElement(Tweet, { key: i, message: tweet.message, author: tweet.author, image: tweet.image });
+	    });
+	
+	    //console.log(list);
+	
+	
+	    return React.createElement(
+	      "div",
+	      { className: "tweets" },
+	      list
+	    );
+	  }
+	});
+	
+	module.exports = TweetList;
+
+/***/ },
+/* 3 */
 /*!**********************!*\
   !*** ./js/tweet.jsx ***!
   \**********************/
@@ -79,6 +153,11 @@
 	        "div",
 	        { className: "author" },
 	        this.props.author
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "image" },
+	        React.createElement("img", { src: this.props.image, alt: "" })
 	      )
 	    );
 	  }
@@ -87,77 +166,7 @@
 	module.exports = Tweet;
 
 /***/ },
-/* 3 */
-/*!****************************!*\
-  !*** ./js/twitterFeed.jsx ***!
-  \****************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var TweetList = __webpack_require__(/*! ./tweetList.jsx */ 4);
-	var TweetForm = __webpack_require__(/*! ./tweetForm.jsx */ 5);
-	
-	var dummyTweets = [{
-	  message: "React is great!",
-	  author: "@steveyblam"
-	}, {
-	  message: "React is ok!",
-	  author: "@steveybob"
-	}, {
-	  message: "React is rubbish!",
-	  author: "@spartan"
-	}];
-	
-	var TweetFeed = React.createClass({
-	  displayName: 'TweetFeed',
-	
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      { className: 'twitter_feed' },
-	      React.createElement(TweetForm, null),
-	      React.createElement(TweetList, { tweets: dummyTweets })
-	    );
-	  }
-	});
-	
-	module.exports = TweetFeed;
-
-/***/ },
 /* 4 */
-/*!**************************!*\
-  !*** ./js/tweetList.jsx ***!
-  \**************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var Tweet = __webpack_require__(/*! ./tweet.jsx */ 2);
-	
-	var TweetList = React.createClass({
-	  displayName: "TweetList",
-	
-	  render: function render() {
-	    var list = this.props.tweets.map(function (tweet, i) {
-	      return React.createElement(Tweet, { key: i, message: tweet.message, author: tweet.author });
-	    });
-	
-	    //console.log(list);
-	
-	
-	    return React.createElement(
-	      "div",
-	      { className: "tweets" },
-	      list
-	    );
-	  }
-	});
-	
-	module.exports = TweetList;
-
-/***/ },
-/* 5 */
 /*!**************************!*\
   !*** ./js/tweetForm.jsx ***!
   \**************************/
@@ -168,17 +177,60 @@
 	var TweetForm = React.createClass({
 	  displayName: "TweetForm",
 	
+	
+	  getInitialState: function getInitialState() {
+	    return {
+	      textcount: 140
+	    };
+	  },
+	
+	  handleChange: function handleChange() {
+	    //console.log(document.getElementById('tweet_text').value.length);
+	    var remaining = 140 - document.getElementById('tweet_text').value.length;
+	    this.setState({
+	      textcount: remaining
+	    });
+	  },
+	
 	  render: function render() {
 	    return React.createElement(
 	      "div",
 	      { className: "new_tweet" },
-	      React.createElement("input", { type: "text", id: "tweet_text" }),
-	      React.createElement("input", { type: "button", value: "Tweet" })
+	      React.createElement("input", { type: "text", id: "tweet_text", onChange: this.handleChange }),
+	      React.createElement("input", { type: "button", value: "Tweet" }),
+	      React.createElement(
+	        "div",
+	        { id: "textCount" },
+	        this.state.textcount
+	      )
 	    );
 	  }
 	});
 	
 	module.exports = TweetForm;
+
+/***/ },
+/* 5 */
+/*!***************************!*\
+  !*** ./js/tweetCount.jsx ***!
+  \***************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var TweetCount = React.createClass({
+	  displayName: "TweetCount",
+	
+	  render: function render() {
+	    return React.createElement(
+	      "div",
+	      { className: "tweetCount" },
+	      this.props.count
+	    );
+	  }
+	});
+	
+	module.exports = TweetCount;
 
 /***/ }
 /******/ ]);

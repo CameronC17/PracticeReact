@@ -1,6 +1,6 @@
-var TweetFeed = require('./twitterFeed.jsx');
+var TwitterFeed = require('./twitterFeed.jsx');
 
 ReactDOM.render(
-  <TweetFeed />,
+  <TwitterFeed />,
   document.getElementById('container')
 );
