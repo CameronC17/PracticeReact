@@ -64,6 +64,7 @@
 	
 	var TweetList = __webpack_require__(/*! ./tweetList.jsx */ 2);
 	var TweetForm = __webpack_require__(/*! ./tweetForm.jsx */ 4);
+	var TweetCount = __webpack_require__(/*! ./tweetCount.jsx */ 5);
 	
 	var dummyTweets = [{
 	  message: "React is not great!",
@@ -84,6 +85,7 @@
 	      'div',
 	      { className: 'twitter_feed' },
 	      React.createElement(TweetForm, null),
+	      React.createElement(TweetCount, { count: dummyTweets.length }),
 	      React.createElement(TweetList, { tweets: dummyTweets })
 	    );
 	  }
@@ -178,6 +180,29 @@
 	});
 	
 	module.exports = TweetForm;
+
+/***/ },
+/* 5 */
+/*!***************************!*\
+  !*** ./js/tweetCount.jsx ***!
+  \***************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var TweetCount = React.createClass({
+	  displayName: "TweetCount",
+	
+	  render: function render() {
+	    return React.createElement(
+	      "div",
+	      { className: "tweetCount" },
+	      this.props.count
+	    );
+	  }
+	});
+	
+	module.exports = TweetCount;
 
 /***/ }
 /******/ ]);
