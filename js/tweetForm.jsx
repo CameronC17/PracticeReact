@@ -17,10 +17,8 @@ var TweetForm = React.createClass({
   render: function() {
     return (
       <div className="new_tweet">
-        <form>
-          <input type="text" id="tweet_text" onChange={this.handleChange} />
-          <button type="submit">Tweet</button>
-        </form>
+        <input type="text" id="tweet_text" onChange={this.handleChange} />
+        <input type="button" value="Tweet" />
         <div id="textCount" >{this.state.textcount}</div>
       </div>
     )

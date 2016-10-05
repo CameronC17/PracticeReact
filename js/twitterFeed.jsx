@@ -17,7 +17,7 @@ var dummyTweets = [
   }
 ];
 
-postTweet = function(tweet) {
+var postTweet = function(tweet) {
   dummyTweets.push(tweet);
   console.log(dummyTweets);
 }

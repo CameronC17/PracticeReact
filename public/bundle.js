@@ -77,7 +77,7 @@
 	  author: "@spartan"
 	}];
 	
-	postTweet = function postTweet(tweet) {
+	var postTweet = function postTweet(tweet) {
 	  dummyTweets.push(tweet);
 	  console.log(dummyTweets);
 	};
@@ -193,16 +193,8 @@
 	    return React.createElement(
 	      "div",
 	      { className: "new_tweet" },
-	      React.createElement(
-	        "form",
-	        null,
-	        React.createElement("input", { type: "text", id: "tweet_text", onChange: this.handleChange }),
-	        React.createElement(
-	          "button",
-	          { type: "submit" },
-	          "Tweet"
-	        )
-	      ),
+	      React.createElement("input", { type: "text", id: "tweet_text", onChange: this.handleChange }),
+	      React.createElement("input", { type: "button", value: "Tweet" }),
 	      React.createElement(
 	        "div",
 	        { id: "textCount" },
