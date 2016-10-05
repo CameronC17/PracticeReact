@@ -68,13 +68,16 @@
 	
 	var dummyTweets = [{
 	  message: "React is not great!",
-	  author: "@steveyblam"
+	  author: "@steveyblam",
+	  image: "http://i.imgur.com/L2VbuPE.gif"
 	}, {
 	  message: "React is ok!",
-	  author: "@steveybob"
+	  author: "@steveybob",
+	  image: "http://i.imgur.com/L2VbuPE.gif"
 	}, {
 	  message: "React is rubbish!",
-	  author: "@spartan"
+	  author: "@spartan",
+	  image: "http://i.imgur.com/L2VbuPE.gif"
 	}];
 	
 	var TweetFeed = React.createClass({
@@ -109,7 +112,7 @@
 	
 	  render: function render() {
 	    var list = this.props.tweets.map(function (tweet, i) {
-	      return React.createElement(Tweet, { key: i, message: tweet.message, author: tweet.author });
+	      return React.createElement(Tweet, { key: i, message: tweet.message, author: tweet.author, image: tweet.image });
 	    });
 	
 	    //console.log(list);
@@ -150,6 +153,11 @@
 	        "div",
 	        { className: "author" },
 	        this.props.author
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "image" },
+	        React.createElement("img", { src: this.props.image, alt: "" })
 	      )
 	    );
 	  }

@@ -5,15 +5,18 @@ var TweetCount = require('./tweetCount.jsx');
 var dummyTweets = [
   {
     message: "React is not great!",
-    author: "@steveyblam"
+    author: "@steveyblam",
+    image: "http://i.imgur.com/L2VbuPE.gif"
   },
   {
     message: "React is ok!",
-    author: "@steveybob"
+    author: "@steveybob",
+    image: "http://i.imgur.com/L2VbuPE.gif"
   },
   {
     message: "React is rubbish!",
-    author: "@spartan"
+    author: "@spartan",
+    image: "http://i.imgur.com/L2VbuPE.gif"
   }
 ];
 

@@ -8,6 +8,9 @@ var Tweet = React.createClass({
         <div className="author">
           {this.props.author}
         </div>
+        <div className="image">
+          <img src={this.props.image} alt="" />
+        </div>
       </div>
     )
   }
