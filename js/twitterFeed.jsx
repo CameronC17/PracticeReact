@@ -17,6 +17,11 @@ var dummyTweets = [
   }
 ];
 
+var postTweet = function(tweet) {
+  dummyTweets.push(tweet);
+  console.log(dummyTweets);
+}
+
 var TweetFeed = React.createClass({
   render: function() {
     return (
