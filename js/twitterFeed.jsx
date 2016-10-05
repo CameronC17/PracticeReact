@@ -3,7 +3,7 @@ var TweetForm = require('./tweetForm.jsx');
 
 var dummyTweets = [
   {
-    message: "React is great!",
+    message: "React is not great!",
     author: "@steveyblam"
   },
   {
