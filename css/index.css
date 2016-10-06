@@ -83,13 +83,14 @@ img{
 
 .delete input[type="button"] {
 
-    width: 7%;
-    height: 5%;
+    width: 50px;
+    height: 15px;
     /*margin-left:15px;*/
     /*padding:15px;*/
     background-color: #CA907E;
     color:#994636;
     border:0px;
     border-radius:2px;
+    font-size: 0.2em;
 
 }
