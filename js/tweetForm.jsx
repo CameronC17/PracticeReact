@@ -6,7 +6,8 @@ var TweetForm = React.createClass({
       textcount: 140,
       submitter: this.props.userList[0].user,
       image: this.props.userList[0].image,
-      tweetCount: 0
+      tweetCount: this.props.userList[0].count,
+      id: 0
     }
   },
 
@@ -24,7 +25,7 @@ var TweetForm = React.createClass({
         image: this.state.image
       };
       this.state.tweetCount++;
-      this.props.postFunction(newMessage);
+      this.props.postFunction(newMessage, this.state.id);
     };
   },
   
@@ -32,6 +33,13 @@ var TweetForm = React.createClass({
     var optionValue = event.target.selectedIndex;
     this.state.submitter = this.props.userList[optionValue].user;
     this.state.image = this.props.userList[optionValue].image;
+    this.state.tweetCount = this.props.userList[optionValue].count;
+    this.state.id = optionValue;
+  },
+
+  handleClear: function() {
+    this.state.tweetCount=0;
+    this.props.clearFunction();
   },
 
   render: function() {
@@ -44,7 +52,7 @@ var TweetForm = React.createClass({
         </select>
         <input type="text" id="tweet_text" onChange={this.handleChange} placeholder="Enter Tweet..."/>
         <input type="button" value="Tweet" onClick={this.handleClick} />
-        <input type="button" value="Clear Tweets" onClick={this.props.clearFunction} />
+        <input type="button" value="Clear Tweets" onClick={this.handleClear} />
         <div id="textCount" >{this.state.textcount}</div>
       </div>
     )

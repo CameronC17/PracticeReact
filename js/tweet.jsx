@@ -1,7 +1,7 @@
 var Tweet = React.createClass({
 
   handleDelete: function(){
-    this.props.delete(this.props.tweetID);
+    this.props.delete(this.props.tweetID, this.props.author);
 
   },
 
