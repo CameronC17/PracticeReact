@@ -11,10 +11,8 @@ var TweetForm = React.createClass({
   },
 
   handleChange: function() {
-      //console.log(document.getElementById('tweet_text').value.length);
       var remaining = 140 - document.getElementById('tweet_text').value.length;
       this.setState({
-        inputValue: document.getElementById('tweet_text').value,
         textcount : remaining
       });
   },

@@ -20,20 +20,20 @@ var dummyTweets = [
   }
 ];
 
-var postTweet = function(tweet) {
-  dummyTweets.push(tweet);
-  console.log(dummyTweets);
-}
 
 var TweetFeed = React.createClass({
   render: function() {
     return (
       <div className="twitter_feed">
-        <TweetForm postFunction={postTweet}/>
+        <TweetForm postFunction={this.postTweet}/>
         <TweetCount count={dummyTweets.length} />
         <TweetList tweets={dummyTweets} />
       </div>
     )
+  },
+  postTweet: function(tweet) {
+    dummyTweets.push(tweet);
+    this.forceUpdate();
   }
 });
 
