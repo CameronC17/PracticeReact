@@ -11,6 +11,9 @@ var Tweet = React.createClass({
         <div className="image">
           <img src={this.props.image} alt="" />
         </div>
+        <div className="delete">
+        <input type="button" value="delete" onClick={this.handleDelete} />
+        </div>
       </div>
     )
   }

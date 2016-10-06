@@ -29,12 +29,21 @@ var TweetForm = React.createClass({
 
   },
 
+handleDelete: function(){
+  
+
+},
+
   render: function() {
     return (
       <div className="new_tweet">
         <input type="text" id="tweet_text" onChange={this.handleChange} placeholder="Enter Tweet..."/>
         <input type="button" value="Tweet" onClick={this.handleClick} />
         <div id="textCount" >{this.state.textcount}</div>
+      </div>
+
+      <div className="delete">
+      <input type="button" value="delete" onClick={this.handleDelete} />
       </div>
     )
   }
