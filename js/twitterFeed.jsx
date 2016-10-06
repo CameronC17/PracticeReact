@@ -27,14 +27,21 @@ var TweetFeed = React.createClass({
       <div className="twitter_feed">
         <TweetForm postFunction={this.postTweet}/>
         <TweetCount count={dummyTweets.length} />
-        <TweetList tweets={dummyTweets} />
+        <TweetList tweets={dummyTweets} deleteFunction={this.deleteFunction} />
       </div>
     )
   },
   postTweet: function(tweet) {
     dummyTweets.push(tweet);
     this.forceUpdate();
+  },
+
+  deleteFunction: function(tweetID){
+    dummyTweets.splice(tweetID, 1);
+    this.forceUpdate();
   }
+
+
 });
 
 module.exports = TweetFeed;

@@ -1,4 +1,10 @@
 var Tweet = React.createClass({
+
+  handleDelete: function(){
+    this.props.delete(this.props.tweetID);
+
+  },
+
   render: function() {
     return (
       <div className="tweet">
@@ -12,7 +18,7 @@ var Tweet = React.createClass({
           <img src={this.props.image} alt="" />
         </div>
         <div className="delete">
-        <input type="button" value="delete" onClick={this.handleDelete} />
+        <input type="button" value="Delete" onClick={this.handleDelete} />
         </div>
       </div>
     )

@@ -21,7 +21,7 @@ var TweetForm = React.createClass({
 
     var newMessage = {
       message: document.getElementById('tweet_text').value,
-      author: "test",
+      author: "@test",
       image: "http://www.focusonline.nl/files/img/avatar-4.png"
     };
 
@@ -29,21 +29,12 @@ var TweetForm = React.createClass({
 
   },
 
-handleDelete: function(){
-  
-
-},
-
   render: function() {
     return (
       <div className="new_tweet">
         <input type="text" id="tweet_text" onChange={this.handleChange} placeholder="Enter Tweet..."/>
         <input type="button" value="Tweet" onClick={this.handleClick} />
         <div id="textCount" >{this.state.textcount}</div>
-      </div>
-
-      <div className="delete">
-      <input type="button" value="delete" onClick={this.handleDelete} />
       </div>
     )
   }
