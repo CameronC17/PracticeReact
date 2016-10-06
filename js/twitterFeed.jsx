@@ -25,16 +25,24 @@ var TweetFeed = React.createClass({
   render: function() {
     return (
       <div className="twitter_feed">
-        <TweetForm postFunction={this.postTweet}/>
+        <TweetForm postFunction={this.postTweet} clearFunction={this.clearTweets}/>
         <TweetCount count={dummyTweets.length} />
         <TweetList tweets={dummyTweets} />
       </div>
     )
   },
+  
   postTweet: function(tweet) {
     dummyTweets.push(tweet);
     this.setState({
       dummyTweets: this.dummyTweets
+    });
+  },
+
+  clearTweets: function() {
+    dummyTweets = [];
+    this.setState({
+      dummyTweets: []
     });
   }
 });
