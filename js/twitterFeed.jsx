@@ -33,7 +33,9 @@ var TweetFeed = React.createClass({
   },
   postTweet: function(tweet) {
     dummyTweets.push(tweet);
-    this.forceUpdate();
+    this.setState({
+      dummyTweets: this.dummyTweets
+    });
   }
 });
 
