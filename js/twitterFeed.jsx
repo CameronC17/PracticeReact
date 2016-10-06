@@ -11,7 +11,7 @@ var dummyTweets = [
   {
     message: "React is ok!",
     author: "@laura",
-    image: "http://www.bgsmath.cat/wp-content/uploads/2015/07/1438038061_female1.png  "
+    image: "http://www.bgsmath.cat/wp-content/uploads/2015/07/1438038061_female1.png"
   },
   {
     message: "React is rubbish!",
@@ -19,6 +19,7 @@ var dummyTweets = [
     image: "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png"
   }
 ];
+
 
 
 var TweetFeed = React.createClass({
