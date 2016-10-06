@@ -26,15 +26,19 @@ var TweetForm = React.createClass({
     };
 
     this.props.postFunction(newMessage);
+  },
 
+  clearTweets: function() {
+    this.props.clearFunction();
   },
 
   render: function() {
     return (
       <div className="new_tweet">
         <input type="text" id="tweet_text" onChange={this.handleChange} placeholder="Enter Tweet..."/>
-        <input type="button" value="Tweet" onClick={this.handleClick} />
-        <div id="textCount" >{this.state.textcount}</div>
+          <input type="button" value="Tweet" onClick={this.handleClick} />
+          <input type="button" value="Clear Tweets" onClick={this.clearTweets} />
+          <div id="textCount" >{this.state.textcount}</div>
       </div>
     )
   }
