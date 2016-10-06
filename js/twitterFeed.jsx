@@ -11,7 +11,7 @@ var dummyTweets = [
   {
     message: "React is ok!",
     author: "@laura",
-    image: "http://www.bgsmath.cat/wp-content/uploads/2015/07/1438038061_female1.png  "
+    image: "http://www.bgsmath.cat/wp-content/uploads/2015/07/1438038061_female1.png"
   },
   {
     message: "React is rubbish!",
@@ -21,16 +21,18 @@ var dummyTweets = [
 ];
 
 
+
 var TweetFeed = React.createClass({
   render: function() {
     return (
       <div className="twitter_feed">
-        <TweetForm postFunction={this.postTweet}/>
+        <TweetForm postFunction={this.postTweet} clearFunction={this.clearTweets}/>
         <TweetCount count={dummyTweets.length} />
         <TweetList tweets={dummyTweets} deleteFunction={this.deleteFunction} />
       </div>
     )
   },
+
   postTweet: function(tweet) {
     dummyTweets.push(tweet);
     this.forceUpdate();
@@ -39,6 +41,13 @@ var TweetFeed = React.createClass({
   deleteFunction: function(tweetID){
     dummyTweets.splice(tweetID, 1);
     this.forceUpdate();
+  },
+
+  clearTweets: function() {
+    dummyTweets = [];
+    this.setState({
+      dummyTweets: []
+    });
   }
 
 
