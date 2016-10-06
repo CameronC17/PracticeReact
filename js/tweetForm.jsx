@@ -2,13 +2,11 @@ var TweetForm = React.createClass({
 
   getInitialState : function() {
 
-    this.state = {
+    return {
       textcount: 140,
       submitter: this.props.userList[0].user,
-      image: this.props.userList[0].image
-    }
-    return {
-
+      image: this.props.userList[0].image,
+      tweetCount: 0
     }
   },
 
@@ -19,14 +17,15 @@ var TweetForm = React.createClass({
   },
 
   handleClick: function() {
-    var newMessage = {
-      message: document.getElementById('tweet_text').value,
-      author: this.state.submitter,
-      image: this.state.image
+    if (this.state.tweetCount<2) {
+      var newMessage = {
+        message: document.getElementById('tweet_text').value,
+        author: this.state.submitter,
+        image: this.state.image
+      };
+      this.state.tweetCount++;
+      this.props.postFunction(newMessage);
     };
-
-    this.props.postFunction(newMessage);
-
   },
   
   handleSelect: function(event) {
