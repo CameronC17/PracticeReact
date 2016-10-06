@@ -45,10 +45,6 @@ handleDelete: function(){
           <input type="button" value="Clear Tweets" onClick={this.clearTweets} />
           <div id="textCount" >{this.state.textcount}</div>
       </div>
-
-      <div className="delete">
-      <input type="button" value="delete" onClick={this.handleDelete} />
-      </div>
     )
   }
 });
