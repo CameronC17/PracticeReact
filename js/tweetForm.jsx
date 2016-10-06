@@ -1,10 +1,11 @@
 var TweetForm = React.createClass({
 
   getInitialState : function() {
-      this.state = {
-        textcount: 140,
-        submitter: this.props.userList[0].user,
-        image: this.props.userList[0].image
+
+    this.state = {
+      textcount: 140,
+      submitter: this.props.userList[0].user,
+      image: this.props.userList[0].image
     }
     return {
 
@@ -39,13 +40,13 @@ var TweetForm = React.createClass({
       <div className="new_tweet">
         <select className="userPicker" onChange={this.handleSelect}>
           {this.props.userList.map(function(user) {
-            return <option>{user.user}</option>
+            return <option key={user.id}>{user.user}</option>
           })};
         </select>
         <input type="text" id="tweet_text" onChange={this.handleChange} placeholder="Enter Tweet..."/>
-          <input type="button" value="Tweet" onClick={this.handleClick} />
-          <input type="button" value="Clear Tweets" onClick={this.clearTweets} />
-          <div id="textCount" >{this.state.textcount}</div>
+        <input type="button" value="Tweet" onClick={this.handleClick} />
+        <input type="button" value="Clear Tweets" onClick={this.props.clearFunction} />
+        <div id="textCount" >{this.state.textcount}</div>
       </div>
     )
   }

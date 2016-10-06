@@ -63,9 +63,7 @@ var TweetFeed = React.createClass({
 
   clearTweets: function() {
     dummyTweets = [];
-    this.setState({
-      dummyTweets: []
-    });
+    this.forceUpdate();
   }
 
 

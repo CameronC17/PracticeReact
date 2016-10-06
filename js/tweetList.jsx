@@ -5,7 +5,7 @@ var TweetList = React.createClass({
     var deleteF = this.props.deleteFunction;
     var list = this.props.tweets.map(function(tweet, i) {
       return (
-        <Tweet tweetID={i} message={tweet.message} author={tweet.author} image={tweet.image} delete={deleteF}/>
+        <Tweet key={i} tweetID={i} message={tweet.message} author={tweet.author} image={tweet.image} delete={deleteF}/>
       )
     })
 
