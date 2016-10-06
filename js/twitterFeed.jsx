@@ -29,7 +29,7 @@ var TweetFeed = React.createClass({
   render: function() {
     return (
       <div className="twitter_feed">
-        <TweetForm/>
+        <TweetForm postFunction={postTweet}/>
         <TweetCount count={dummyTweets.length} />
         <TweetList tweets={dummyTweets} />
       </div>
