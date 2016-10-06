@@ -2,8 +2,9 @@ var TweetForm = React.createClass({
 
   getInitialState : function() {
       this.state = {
-      inputValue: '',
-      textcount: 140
+        textcount: 140,
+        submitter: this.props.userList[0].user,
+        image: this.props.userList[0].image
     }
     return {
 
@@ -12,17 +13,15 @@ var TweetForm = React.createClass({
 
   handleChange: function() {
       var remaining = 140 - document.getElementById('tweet_text').value.length;
-      this.setState({
-        textcount : remaining
-      });
+      this.state.textcount = remaining;
+      this.forceUpdate();
   },
 
   handleClick: function() {
-
     var newMessage = {
       message: document.getElementById('tweet_text').value,
-      author: "test",
-      image: "http://www.focusonline.nl/files/img/avatar-4.png"
+      author: this.state.submitter,
+      image: this.state.image
     };
 
     this.props.postFunction(newMessage);
@@ -32,22 +31,24 @@ var TweetForm = React.createClass({
     this.props.clearFunction();
   },
 
-handleDelete: function(){
-  
-
-},
+  handleSelect: function(event) {
+    var optionValue = event.target.selectedIndex;
+    this.state.submitter = this.props.userList[optionValue].user;
+    this.state.image = this.props.userList[optionValue].image;
+  },
 
   render: function() {
     return (
       <div className="new_tweet">
+        <select className="userPicker" onChange={this.handleSelect}>
+          {this.props.userList.map(function(user) {
+            return <option>{user.user}</option>
+          })};
+        </select>
         <input type="text" id="tweet_text" onChange={this.handleChange} placeholder="Enter Tweet..."/>
           <input type="button" value="Tweet" onClick={this.handleClick} />
           <input type="button" value="Clear Tweets" onClick={this.clearTweets} />
           <div id="textCount" >{this.state.textcount}</div>
-      </div>
-
-      <div className="delete">
-      <input type="button" value="delete" onClick={this.handleDelete} />
       </div>
     )
   }
