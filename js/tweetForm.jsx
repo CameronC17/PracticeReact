@@ -20,10 +20,9 @@ var TweetForm = React.createClass({
   },
 
   handleClick: function() {
-    console.log(this.state.inputValue);
 
     var newMessage = {
-      message: "test",
+      message: document.getElementById('tweet_text').value,
       author: "test",
       image: "http://www.focusonline.nl/files/img/avatar-4.png"
     };
