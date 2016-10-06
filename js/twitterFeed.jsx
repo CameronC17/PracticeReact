@@ -32,10 +32,14 @@ var TweetFeed = React.createClass({
       </div>
     )
   },
+  
   postTweet: function(tweet) {
     dummyTweets.push(tweet);
-    this.forceUpdate();
+    this.setState({
+      dummyTweets: this.dummyTweets
+    });
   },
+
   clearTweets: function() {
     dummyTweets = [];
     this.setState({
